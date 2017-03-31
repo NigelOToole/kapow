@@ -1,0 +1,147 @@
+// ----- Basic styles -----
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'komika-axis-regular';
+  src: url('./fonts/KOMIKAX-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'didact-gothic-regular';
+  src: url('./fonts/didact-gothic-regular-webfont.woff') format('woff');
+}
+
+body {
+  margin-top: 68px;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 90px;
+  }
+}
+
+body, button, input, optgroup, select, textarea {
+  font-family: -apple-system, system-ui, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'didact-gothic-regular';
+  font-size: 1.4rem;
+}
+
+h1,
+h2, 
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 3rem;
+  margin-bottom: .5rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+h1 { font-size: 3.9rem; }
+h2 { font-size: 2.0rem; }
+h3 { font-size: 2.4rem; }
+h4 { font-size: 1.8rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.4rem; }
+
+h1,
+h2, 
+h3,
+h4,
+h5,
+h6,
+.logo {
+  font-family: 'komika-axis-regular';
+  letter-spacing: .07em;
+}
+
+
+@media (max-width: 767px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color .2s;
+
+  &:hover,
+  &:focus {
+    color: $primary-color-dark;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  background-color: $primary-color;
+  border: 1px solid transparent;
+  transition: all .2s;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: $primary-color-dark;
+  }
+}
+
+.img-fluid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+// Layout
+
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 1140px;
+}
+
+
+// Main navigation
+.nav-main {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 10px 0;
+  background-color: $primary-color;
+  
+}
+
+  .logo {
+    color: #fff;
+    font-size: 2.4rem;
+    text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
+  }
+
+.back {
+  font-size: 1rem;
+}
+
+
+.footer {
+  font-size: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
