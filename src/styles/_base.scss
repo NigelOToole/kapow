@@ -14,18 +14,26 @@
   src: url('./fonts/didact-gothic-regular-webfont.woff') format('woff');
 }
 
-body {
-  margin-top: 68px;
+html {
+  font-size: 9px;
 
   @media (min-width: $screen-sm-min) {
-    margin-top: 90px;
+    font-size: 10px;
   }
 }
 
 body, button, input, optgroup, select, textarea {
   font-family: -apple-system, system-ui, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-family: 'didact-gothic-regular';
-  font-size: 1.4rem;
+}
+
+body {
+  margin-top: 68px;
+  font-size: 1.6rem;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 90px;
+  }
 }
 
 h1,
@@ -41,8 +49,8 @@ h6 {
     margin-top: 0;
   }
 }
-h1 { font-size: 3.9rem; }
-h2 { font-size: 2.0rem; }
+h1 { font-size: 5rem; }
+h2 { font-size: 3rem; }
 h3 { font-size: 2.4rem; }
 h4 { font-size: 1.8rem; }
 h5 { font-size: 1.5rem; }
@@ -60,12 +68,6 @@ h6,
 }
 
 
-@media (max-width: 767px) {
-  html {
-    font-size: 9px;
-  }
-}
-
 
 a {
   color: $primary-color;
@@ -81,7 +83,6 @@ a {
 .btn {
   display: inline-block;
   padding: .5rem 1rem;
-  font-size: 1rem;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -124,20 +125,21 @@ a {
   top: 0;
   z-index: 100;
   width: 100%;
-  padding: 10px 0;
+  padding: .5rem 1rem 1rem 1rem;
   background-color: $primary-color;
   
 }
 
   .logo {
     color: #fff;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
-  }
 
-.back {
-  font-size: 1rem;
-}
+    @media (min-width: $screen-sm-min) {
+      font-size: 4.2rem;
+    }
+    
+  }
 
 
 .footer {

@@ -13,12 +13,15 @@
 
 </template>
 
+
 <script>
+
+  import store from '../store';
 
   export default {
     name: 'characterList',
 
-    props: ['characters', 'charactersPopular'],
+    props: [],
 
     data: function () {
       return {
@@ -29,8 +32,8 @@
     computed: {
 
       charactersList: function () {
-        return this.charactersPopular;
-      },
+        return store.state.charactersPopular;
+      }
 
     }
 
@@ -44,20 +47,25 @@
   // Display the characters in a grid
   .char-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); // Split the grid into 2 columns, equally spaced as 1 fraction unit each.
     grid-gap: 20px;
     margin: 20px 0;
+
+    @media (min-width: $screen-xs-min) {
+      // Split the grid into 4 columns, equally spaced as 1 fraction unit each. The same as '1fr 1fr 1fr 1fr'
+      grid-template-columns: repeat(2, 1fr); 
+      
+      // First two items span 2 columns and 2 rows making it twice as large
+      :nth-child(1), :nth-child(2) {
+        grid-column: span 2; 
+        grid-row: span 2;
+      }
+    }
 
     @media (min-width: $screen-sm-min) {
       // Split the grid into 4 columns, equally spaced as 1 fraction unit each. The same as '1fr 1fr 1fr 1fr'
       grid-template-columns: repeat(4, 1fr); 
     }
 
-    // First two items span 2 columns and 2 rows making it twice as large
-    :nth-child(1), :nth-child(2) {
-      grid-column: span 2; 
-      grid-row: span 2;
-    }
   }
 
     .char-list-item {
