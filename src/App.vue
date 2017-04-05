@@ -3,7 +3,7 @@
   
     <nav class="nav-main">
       <div class="container">
-        <a href="/" class="logo">Kapow!</a>
+        <router-link to="/" class="logo">Kapow!</router-link>
       </div>
     </nav>
 
@@ -29,7 +29,7 @@ import store from './store';
 
     created: function () {
 
-      // Get the 10 most popular characters that have appeared in the X-Men series
+      // Load characters from the API in the store/index.js
       store.dispatch('loadCharacters');
       
     }

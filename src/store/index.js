@@ -67,15 +67,8 @@ export default new Vuex.Store({
     addMoreInfoURL: (state) => {
 
       state.characters.forEach((item) => {
-        const urlArray = item.urls.filter((item) => detailURL(item));
-        item.moreInfoURL = urlArray[0].url;
+        item.moreInfoURL = item.urls.filter((item) => item.type === "detail").pop()["url"];
       });
-
-      function detailURL(item) {
-        if (item.type === "detail") {
-          return true;
-        }        
-      }
 
     }
 
