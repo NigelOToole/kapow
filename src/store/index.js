@@ -22,57 +22,55 @@ export default new Vuex.Store({
     // X-Men (1991 - 2001); series id = 2265
     loadCharacters: ({ commit }) => {
 
-      // Version 1 - Muliple API calls
-      // const apiCall1 = 
-      //   fetch(`${apiURL}${apiCalls[0]}${apiKey}`)
-      //   .then(response => response.json())
-      //   .then(response => {
-      //     if (typeof response.data === 'string') {
-      //       response.data = JSON.parse(response.data);
-      //     }
-      //     return response.data.results;
-      // });
-
-      // const apiCall2 = 
-      //   fetch(`${apiURL}${apiCalls[1]}${apiKey}`)
-      //   .then(response => response.json())
-      //   .then(response => {
-      //     if (typeof response.data === 'string') {
-      //       response.data = JSON.parse(response.data);
-      //     }
-      //     return response.data.results;
-      // });
-
-      // Promise.all([apiCall1, apiCall2]).then(function(values){
-      //   const combinedData = values[0].concat(values[1]);
-      //   return combinedData;
-      // });
-
       fetch(`${apiURL}${apiCalls[0]}${apiKey}`)
-        .then(resp => resp.json())
-        .then(resp => {
-
-          if (typeof resp.data === 'string') {
-            resp.data = JSON.parse(resp.data);
+        .then(response => handleResponse(response))
+        .then(response => {
+          if (typeof response.data === 'string') {
+            response.data = JSON.parse(response.data);
           }
-          // console.log(resp.data.results);
-          commit('addCharacters', resp.data.results);
-            
+
+          commit('addCharacters', response.data.results);
         })
-        .then(resp => {
+        .then(response => {
           commit('sortByPopularity');
         })
-        .then(resp => {
+        .then(response => {
           commit('addMoreInfoURL');
         })
-        .then(resp => {
+        .then(response => {
           commit('addCharactersPopular');
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
 
-    }
+
+        function handleResponse (response) {
+          console.log(response);
+          let contentType = response.headers.get('content-type');
+          if (contentType.includes('application/json')) {
+            return handleJSONResponse(response);
+          } else {
+            throw new Error(`Sorry, content-type ${contentType} not supported`);
+          }
+        }
+
+        function handleJSONResponse (response) {
+          return response.json()
+            .then(json => {
+              if (response.ok) {
+                return json;
+              } else {
+                return Promise.reject(Object.assign({}, json, {
+                  status: response.status,
+                  statusText: response.statusText
+                }));
+              }
+            });
+        }
+
+    },
+
   },
 
   mutations: {
