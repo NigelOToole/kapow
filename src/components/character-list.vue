@@ -32,7 +32,7 @@
     computed: {
 
       charactersList: function () {
-        return store.state.charactersPopular;
+        return store.state.characters;
       }
 
     }

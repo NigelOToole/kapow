@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import localforage from 'localforage';
 
 Vue.use(Vuex);
 
@@ -20,11 +21,11 @@ export default new Vuex.Store({
 
     // Get the 10 most popular characters that have appeared in the X-Men series
     // X-Men (1991 - 2001); series id = 2265
-    loadCharacters: ({ commit }) => {
+    loadCharacters: ({ commit, state }) => {
 
       fetch(`${apiURL}${apiCalls[0]}${apiKey}`)
         .then(response => handleResponse(response))
-        .then(response => {
+        .then(response => {          
           if (typeof response.data === 'string') {
             response.data = JSON.parse(response.data);
           }
@@ -33,12 +34,17 @@ export default new Vuex.Store({
         })
         .then(response => {
           commit('sortByPopularity');
-        })
-        .then(response => {
           commit('addMoreInfoURL');
         })
         .then(response => {
-          commit('addCharactersPopular');
+
+          // Add the data to local stroage
+          localforage.setItem('characters', state.characters)
+            .then(data => {
+              return data;
+            }).catch(function (error) {
+              console.log(error);
+            });
         })
         .catch(function(error) {
           console.log(error);
@@ -46,7 +52,6 @@ export default new Vuex.Store({
 
 
         function handleResponse (response) {
-          console.log(response);
           let contentType = response.headers.get('content-type');
           if (contentType.includes('application/json')) {
             return handleJSONResponse(response);
@@ -79,10 +84,6 @@ export default new Vuex.Store({
       state.characters = arg;
     },
 
-    addCharactersPopular: (state) => {
-      state.charactersPopular = state.characters;
-    },
-    
     // Add popularity value based on number of comics the character has appeared in and sort from highest to lowest
     sortByPopularity: (state) => {
       state.characters.forEach((item) => {

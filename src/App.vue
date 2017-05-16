@@ -18,6 +18,7 @@
 <script>
 
 import store from './store';
+import localforage from 'localforage';
 
   export default {
     name: 'app',
@@ -28,10 +29,24 @@ import store from './store';
     },
 
     created: function () {
+      console.log('created');
 
-      // Load characters from the API in the store/index.js
-      store.dispatch('loadCharacters');
-      
+      // Load data from the API in the store/index.js or from Local storage if available
+      localforage.getItem('characters')
+        .then(data => {
+          if(data !== null) {
+            console.log('data from local storage');
+            store.state.characters = data;
+          }
+          else {
+            console.log('data from API');
+            store.dispatch('loadCharacters');
+          };
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
     }
   };
 
