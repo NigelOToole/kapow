@@ -23,8 +23,7 @@ html {
 }
 
 body, button, input, optgroup, select, textarea {
-  font-family: -apple-system, system-ui, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
-  font-family: 'didact-gothic-regular';
+  font-family: 'didact-gothic-regular', -apple-system, system-ui, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
@@ -63,7 +62,7 @@ h4,
 h5,
 h6,
 .logo {
-  font-family: 'komika-axis-regular';
+  font-family: 'komika-axis-regular', 'Impact', 'Arial black', Arial, sans-serif;;
   letter-spacing: .07em;
 }
 
