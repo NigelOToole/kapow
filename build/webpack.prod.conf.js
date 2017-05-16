@@ -94,7 +94,9 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css,png,jpg,gif,svg,woff}'],
       minify: true,
-      stripPrefix: 'dist/'
+      stripPrefix: 'dist/',
+      runtimeCaching: []
+      // importScripts: ['fallback-image.js']
     })
   ]
 })

@@ -71,6 +71,7 @@
     .char-list-item {
       display: block;
       position: relative;
+      min-height: 200px;
       border: 5px solid #333;
       transition: color .2s,  border-color .2s;
 
@@ -83,7 +84,8 @@
       .char-list-item-title {
         position: absolute;
         margin: 5px 10px;
-        text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
+        text-shadow: $title-shadow;
+        word-break: break-word;
       }
       .char-list-item-img {
       }

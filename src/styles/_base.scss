@@ -132,7 +132,7 @@ a {
   .logo {
     color: #fff;
     font-size: 3.2rem;
-    text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
+    text-shadow: $title-shadow;
 
     @media (min-width: $screen-sm-min) {
       font-size: 4.2rem;
