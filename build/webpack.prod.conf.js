@@ -95,8 +95,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       staticFileGlobs: ['dist/**/*.{js,html,css,png,jpg,gif,svg,woff}'],
       minify: true,
       stripPrefix: 'dist/',
-      runtimeCaching: []
-      // importScripts: ['fallback-image.js']
+      runtimeCaching: [
+        {
+          urlPattern: /i\.annihil\.us/, // Cache images from API images url
+          handler: 'cacheFirst'
+        }
+      ]
     })
   ]
 })

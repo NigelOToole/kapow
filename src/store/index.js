@@ -42,7 +42,8 @@ export default new Vuex.Store({
           localforage.setItem('characters', state.characters)
             .then(data => {
               return data;
-            }).catch(function (error) {
+            })
+            .catch(function (error) {
               console.log(error);
             });
         })
