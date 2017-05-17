@@ -6,7 +6,7 @@
     <div class="characters characters--detail">
 
       <div class="characters--detail__item">
-        <img :src="`${ characterDetail.thumbnail.path }.${ characterDetail.thumbnail.extension }`" class="img-fluid characters--detail__img">
+        <img :src="`${ characterDetail.thumbnail.path }.${ characterDetail.thumbnail.extension }`" class="img-fluid characters--detail__img" :alt="characterDetail.name">
       </div>
 
       <div class="characters--detail__item">
