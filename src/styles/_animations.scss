@@ -1,0 +1,46 @@
+// ----- Animations between views -----
+
+// Fade animation
+.fade-anim-enter-active {
+  transition: opacity .4s ease;
+}
+.fade-anim-enter {
+  opacity: 0;
+}
+
+// Slide animation
+.slide-anim {
+  will-change: transform;
+  $bezier: cubic-bezier(0.175, 0.885, 0.235, 1.120); /* easeOutBack */
+
+  &-enter-active {
+    animation: slidein .4s $bezier;
+  }
+
+  &-leave-active {
+    animation: slideout .2s $bezier;
+  }
+}
+
+
+@keyframes slidein {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideout {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

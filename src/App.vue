@@ -9,7 +9,7 @@
 
     <div class="loader" v-if="loading">Loading...</div>
 
-    <router-view></router-view>
+    <transition mode="out-in" name="slide-anim"><router-view></router-view></transition>
 
     <footer class="container footer"><a href="http://marvel.com">Data provided by Marvel. © 2017 MARVEL</a></footer>
 
@@ -27,7 +27,8 @@ import localforage from 'localforage';
 
     data: function () {
       return {
-        loading: false
+        loading: false,
+        transitionName: 'slide-left'
       };
     },
 
@@ -45,16 +46,16 @@ import localforage from 'localforage';
         localforage.getItem('characters')
           .then(data => {
             if(data !== null) {
-              console.log('data from local storage');
+              // console.log('data from local storage');
               store.state.characters = data;
             }
             else {
-              console.log('data from API');
+              // console.log('data from API');
               store.dispatch('loadCharacters');
             };
           })
           .then(() => {
-            console.log('finished loading');
+            // console.log('finished loading');
             this.loading = false;
           })
           .catch(function (error) {
