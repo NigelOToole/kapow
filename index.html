@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KAPOW!</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/favicons/favicon-32x32.png">
 
     <!-- Add to home screen for Android and modern mobile browsers -->
-    <link rel="manifest" href="/static/manifest.json">
+    <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
     <meta name="theme-color" content="#f0141e">
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="KAPOW!">
-    <link rel="apple-touch-icon" href="/static/img/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/favicons/apple-touch-icon.png">
 
     <!-- Add to home screen for Windows -->
-    <meta name="msapplication-TileImage" content="/static/img/favicons/mstile-150x150.png">
+    <meta name="msapplication-TileImage" content="<%= htmlWebpackPlugin.files.publicPath %>static/img/favicons/mstile-150x150.png">
     <meta name="msapplication-TileColor" content="#f0141e">
     
     <% for (var chunk of webpack.chunks) {

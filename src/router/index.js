@@ -18,13 +18,13 @@ export default new Router({
       component: characterDetail,
       props: true
     }
-  ],
-  mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { x: 0, y: 0 };
-    }
-  }
+  ]
+  // mode: 'history',
+  // scrollBehavior (to, from, savedPosition) {
+  //   if (savedPosition) {
+  //     return savedPosition;
+  //   } else {
+  //     return { x: 0, y: 0 };
+  //   }
+  // }
 });

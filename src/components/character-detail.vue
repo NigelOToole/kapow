@@ -6,13 +6,13 @@
     <div class="characters characters--detail">
 
       <div class="characters--detail__item">
-        <img :src="`${ characterDetail.thumbnail.path }.${ characterDetail.thumbnail.extension }`" class="img-fluid characters--detail__img" :alt="characterDetail.name">
+        <img :src="character.thumbnailFull" class="img-fluid characters--detail__img" :alt="character.name">
       </div>
 
       <div class="characters--detail__item">
-        <h1>{{ characterDetail.name }}</h1>
-        <p>{{ characterDetail.description }}</p>
-        <a :href="`${ characterDetail.moreInfoURL }`" target="_blank" class="btn">More information</a>
+        <h1>{{ character.name }}</h1>
+        <p>{{ character.description }}</p>
+        <a :href="`${ character.moreInfoURL }`" target="_blank" class="btn">More information</a>
       </div>
 
     </div>
@@ -33,7 +33,7 @@
     computed: {
 
       // Returns that character with the matching id
-      characterDetail: function () {
+      character: function () {
         return store.getters.getCharacterById(this.id);
       }
     }

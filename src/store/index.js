@@ -35,6 +35,7 @@ export default new Vuex.Store({
         .then(response => {
           commit('sortByPopularity');
           commit('addMoreInfoURL');
+          commit('addThumbnailFull');
         })
         .then(response => {
 
@@ -99,6 +100,17 @@ export default new Vuex.Store({
 
       state.characters.forEach((item) => {
         item.moreInfoURL = item.urls.filter((item) => item.type === "detail").pop()["url"];
+      });
+
+    },
+
+    // Add full path to thumbnail
+    addThumbnailFull: (state) => {
+      let secureURL;
+
+      state.characters.forEach((item) => {
+        secureURL = item.thumbnail.path.replace('http://', 'https://');
+        item.thumbnailFull = `${ secureURL }.${ item.thumbnail.extension }`;
       });
 
     }
